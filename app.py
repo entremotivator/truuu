@@ -1,13 +1,12 @@
-import streamlit as st
+from user import streamlit as st
 import requests
 from truera.client.truera_workspace import TrueraWorkspace
 from truera.client.truera_authentication import TokenAuthentication
 
-# Replace these placeholders with your actual TruEra URL and token
+# Replace these placeholders with your actual TruEra URL
 TRUERA_URL = "<YOUR_TRUERA_URL>"
-TOKEN = "<YOUR_TRUERA_TOKEN>"
 
-auth = TokenAuthentication(TOKEN)
+auth = TokenAuthentication("<YOUR_TRUERA_API_TOKEN>")
 tru = TrueraWorkspace(TRUERA_URL, auth)
 
 def fetch_data(api_key, endpoint):
@@ -31,10 +30,10 @@ def main():
     st.title("TruEra API Data Display")
     
     # Input API key from the user
-    api_key = st.text_input("Enter TruEra API Key:")
+    api_key = st.text_input("Enter TruEra API Token:")
     
     if api_key:
-        # Fetch data using the provided API key
+        # Fetch data using the provided API token
         st.subheader("Example Endpoints:")
         for i in range(1, 11):
             endpoint = f"example_endpoint_{i}"
